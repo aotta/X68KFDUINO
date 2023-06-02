@@ -81,7 +81,7 @@ void loop() {
   unsigned int bit1Eject=0;
   unsigned int bit1Msk=0;
   unsigned int bit1Blink=0;
-  unsigned int dint=40; //40 ok x drakula e ajax
+  unsigned int dint=30; //30 ok x drakula e ajax
   unsigned int dblink=50;  //50 ok x drakula e ajax
   
   // put your main code here, to run repeatedly:
@@ -125,6 +125,7 @@ void loop() {
     //  Serial.println("MSK0");
       digitalWrite(LED_RED,HIGH);
     } else {
+      LDF0=0;
       digitalWrite(LED_RED,LOW);
     }
  
@@ -167,6 +168,7 @@ void loop() {
     //  Serial.println("MSK1");
     digitalWrite(LED_RED,HIGH);
   } else {
+      LDF1=0;
       digitalWrite(LED_RED,LOW);
     }
     
