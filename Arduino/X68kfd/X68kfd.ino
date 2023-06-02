@@ -81,36 +81,36 @@ void loop() {
   unsigned int bit1Eject=0;
   unsigned int bit1Msk=0;
   unsigned int bit1Blink=0;
+  unsigned int dint=40; //40 ok x drakula e ajax
+  unsigned int dblink=50;  //50 ok x drakula e ajax
   
   // put your main code here, to run repeatedly:
 
  while(1) {
 
    digitalWrite(Inserted,HIGH);
-   digitalWrite(Error,LOW);
+  // digitalWrite(Error,LOW); needed for nemesis 90 kay?
  
    if ((digitalRead(BT_FD0)==HIGH)&&(LDF0==0)) {
      bit0Blink=0;
-   //  digitalWrite(FDDINT,LOW);
      if (DF0==1) {
         DF0=0;
       } else {
         DF0=1;
       }
     Serial.print("DF0:");Serial.println(DF0);
-    delay(800);
+    delay(600);
     }
 
   if ((digitalRead(BT_FD1)==HIGH)&&(LDF1==0)) {
       bit1Blink=0;
-   //   digitalWrite(FDDINT,LOW);
       if (DF1==1) {
         DF1=0;
       } else {
         DF1=1;
       }
     Serial.print("DF1:");Serial.println(DF1);
-    delay(800);
+    delay(600);
     }
 
    if (digitalRead(OPT0)==LOW) {
@@ -121,7 +121,6 @@ void loop() {
     }
     
     if (digitalRead(EjectMSK)==LOW) {
- //   if (digitalRead(Motor)==LOW) {
       LDF0=1;
     //  Serial.println("MSK0");
       digitalWrite(LED_RED,HIGH);
@@ -132,9 +131,9 @@ void loop() {
     if (digitalRead(LED_BLINK)==LOW) {
        bit0Blink=1;
        digitalWrite(LEDFD0,LOW); 
-        delay(80);
-   //    digitalWrite(LEDFD0,HIGH);
-       Serial.println("Blk 0-"); 
+        delay(dblink);   // low for A-JAX
+       digitalWrite(LEDFD0,HIGH);
+     //  Serial.println("Blk 0-"); 
     }
 
     
@@ -148,9 +147,8 @@ void loop() {
          digitalWrite(Error,HIGH);
          digitalWrite(FDDINT,HIGH);
          digitalWrite(LEDFD0,HIGH);
-          } else {
-         //digitalWrite(Inserted,LOW);
-         //digitalWrite(Error,HIGH);
+         delay(dint); // to receipt from X68k?
+             } else {
           digitalWrite(FDDINT,LOW);
           digitalWrite(LEDFD0,HIGH); 
          }
@@ -166,7 +164,7 @@ void loop() {
     
   if (digitalRead(EjectMSK)==LOW) {
       LDF1=1;
-      Serial.println("MSK1");
+    //  Serial.println("MSK1");
     digitalWrite(LED_RED,HIGH);
   } else {
       digitalWrite(LED_RED,LOW);
@@ -175,9 +173,9 @@ void loop() {
   if (digitalRead(LED_BLINK)==LOW) {
        bit1Blink=1;
        digitalWrite(LEDFD1,LOW); 
-     delay(80);
+     delay(dblink);
       // digitalWrite(LEDFD1,HIGH); 
-      Serial.print("Blk 1-");
+      //Serial.print("Blk 1-");
        }
     
        if (DF1==0) {
@@ -186,14 +184,12 @@ void loop() {
       } else {
        if (bit1Blink==0) {
          digitalWrite(Inserted,LOW);
-         //Serial.print("df1-IN");
+        //  Serial.print("df1-IN");
          digitalWrite(Error,HIGH);
          digitalWrite(FDDINT,HIGH);
          digitalWrite(LEDFD1,HIGH);
+         delay(dint); // to receipt from X68k?
           } else {
-         //digitalWrite(Inserted,LOW);
-         //digitalWrite(Error,HIGH);
-         //digitalWrite(FDDINT,HIGH);
           digitalWrite(LEDFD1,HIGH); 
          }
       }
