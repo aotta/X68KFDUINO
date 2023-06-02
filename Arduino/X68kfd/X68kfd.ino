@@ -86,8 +86,8 @@ void loop() {
 
  while(1) {
 
-   digitalWrite(FDDINT,LOW);
-   digitalWrite(LEDFD0,LOW);
+   digitalWrite(Inserted,HIGH);
+   digitalWrite(Error,LOW);
  
    if ((digitalRead(BT_FD0)==HIGH)&&(LDF0==0)) {
      bit0Blink=0;
@@ -121,8 +121,9 @@ void loop() {
     }
     
     if (digitalRead(EjectMSK)==LOW) {
+ //   if (digitalRead(Motor)==LOW) {
       LDF0=1;
-      Serial.println("MSK0");
+    //  Serial.println("MSK0");
       digitalWrite(LED_RED,HIGH);
     } else {
       digitalWrite(LED_RED,LOW);
