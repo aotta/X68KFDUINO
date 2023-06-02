@@ -1,0 +1,82 @@
+
+(rules PCB X68KFDUINO
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 8)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.7)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.6)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.0)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd-smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (class default
+    GND ~{DENSITY} "unconnected-(J1-Pad3)" "unconnected-(J1-Pad4)" ~{DS3} ~{INDEX} ~{DS0} ~{DS1}
+    ~{DS2} ~{MOTOR} ~{DIR} ~{STEP} ~{WDATA} ~{WGATE} ~{TRK0} ~{WPROT}
+    ~{RDATA} ~{SIDE} ~{RDY} ~{OPT0} "unconnected-(J2-Pad2)" ~{OPT1} ~{OPT2} ~{OPT3}
+    ~{EJECT} ~{EjectMSK} LED ~{INSERTED} ~{ERROR} ~{FDDINT} +5V "Net-(D1-Pad2)"
+    "unconnected-(J2-Pad18)" "unconnected-(J2-Pad19)" "unconnected-(J8-Pad4)" "unconnected-(J15-Pad4)" "unconnected-(A1-Pad1)" "unconnected-(A1-Pad2)" "unconnected-(A1-Pad3)" "unconnected-(J1-Pad6)"
+    "unconnected-(A1-Pad17)" "unconnected-(A1-Pad18)" "unconnected-(A1-Pad24)" "unconnected-(A1-Pad25)" "unconnected-(A1-Pad26)" "unconnected-(A1-Pad28)" "unconnected-(J2-Pad37)" "Net-(D2-Pad2)"
+    "Net-(D3-Pad2)" "BT_FD0" "BT_FD1" "LED_Err" LEDFD0 LEDFD1 "unconnected-(A1-Pad16)" "unconnected-(A1-Pad30)"
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    (clearance_class "kicad_default")
+    (via_rule "kicad_default")
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
