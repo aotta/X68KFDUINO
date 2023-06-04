@@ -12,3 +12,5 @@ More info on nfg.forums : https://nfggames.com/forum2/index.php?topic=7225.0
 ![ScreenShot](https://raw.githubusercontent.com/aotta/X68KFDUINO/main/example2.jpg)
 ![ScreenShot](https://raw.githubusercontent.com/aotta/X68KFDUINO/main/example3.jpg)
 ![ScreenShot](https://raw.githubusercontent.com/aotta/X68KFDUINO/main/example4.jpg)
+![ScreenShot](https://raw.githubusercontent.com/aotta/X68KFDUINO/main/case0.jpg)
+![ScreenShot](https://raw.githubusercontent.com/aotta/X68KFDUINO/main/case2.jpg)
